@@ -1,0 +1,56 @@
+<div class="todo-container">
+  <h2>My Todos</h2>
+  
+  @if (loading) {
+    <div class="loading">
+      Loading todos...
+    </div>
+  }
+  @if (error) {
+    <div class="error">
+      {{ error }}
+      <button (click)="loadTodos()" class="retry-btn">Retry</button>
+    </div>
+  }
+
+  @if (!loading && !error) {
+    <div class="todo-list">
+      @if (todos.length === 0) {
+        <div class="empty-state">
+          No todos found. Start by adding a new todo!
+        </div>
+      }
+      
+      @for (todo of todos; track todo.id) {
+        <div class="todo-item" [class.completed]="todo.completed">
+          <div class="todo-content">
+            <!-- <input 
+              type="checkbox" 
+              [checked]="todo.completed"
+              (change)="toggleTodoComplete(todo)"
+              class="todo-checkbox"
+            /> -->
+            <div class="todo-text">
+              <h3>{{ todo.title }}</h3>
+              @if (todo.description) {
+                <p>{{ todo.description }}</p>
+              }
+              @if (todo.createdAt) {
+                <small>
+                  Created: {{ todo.createdAt | date:'short' }}
+                </small>
+              }
+            </div>
+          </div>
+          <!-- <button 
+            (click)="deleteTodo(todo.id!)" 
+            class="delete-btn"
+            title="Delete todo"
+          >
+            ×
+          </button> -->
+        </div>
+      }
+    </div>
+  }
+
