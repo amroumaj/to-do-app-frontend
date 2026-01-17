@@ -1,1 +1,28 @@
-<p>todo-item works!</p>
+<div class="todo-item" [class.completed]="todo.completed">
+  <div class="todo-content">
+    <!-- <input 
+      type="checkbox" 
+      [checked]="todo.completed"
+      (change)="onToggleComplete()"
+      class="todo-checkbox"
+    />-->
+    <div class="todo-text">
+      <h3>{{ todo.title }}</h3>
+      @if (todo.description) {
+        <p>{{ todo.description }}</p>
+      }
+      @if (todo.createdAt) {
+        <small>
+          <!-- Created: {{ todo.createdAt | date:'short' }} -->
+        </small>
+      }
+    </div>
+  </div>
+ <!--  <button 
+    (click)="onDelete()" 
+    class="delete-btn"
+    title="Delete todo"
+  >
+    ×
+  </button> -->
+</div>

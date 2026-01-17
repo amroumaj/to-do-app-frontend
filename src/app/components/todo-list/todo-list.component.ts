@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../model/todo.model';
 import { TodoService } from '../../servcies/todo.service';
+import { TodoItemComponent } from '../todo-item/todo-item.component';
 
 @Component({
   selector: 'app-todo-list',
-  imports: [CommonModule],
+  imports: [CommonModule,TodoItemComponent],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css'
 })
