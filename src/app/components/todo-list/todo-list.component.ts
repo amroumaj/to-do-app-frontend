@@ -37,4 +37,11 @@ export class TodoListComponent implements OnInit {
       }
     });
   }
+
+  onTodoToggle(updatedTodo: Todo): void {
+    const index = this.todos.findIndex(todo => todo.id === updatedTodo.id);
+    if (index !== -1) {
+      this.todos[index] = updatedTodo;
+    }
+  }
 }

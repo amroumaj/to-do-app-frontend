@@ -18,4 +18,12 @@ export class TodoService {
   getTodoById(id: string): Observable<Todo> {
     return this.http.get<Todo>(`${this.apiUrl}/${id}`);
   }
+
+  toggleTodoComplete(id: string): Observable<Todo> {
+    return this.http.patch<Todo>(`${this.apiUrl}/${id}/toggle`, {});
+  }
+
+  getIncompleteTodos(): Observable<Todo[]> {
+    return this.http.get<Todo[]>(`${this.apiUrl}?completed=false`);
+  }
 }

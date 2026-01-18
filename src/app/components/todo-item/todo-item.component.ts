@@ -15,4 +15,15 @@ export class TodoItemComponent {
   @Input() todo!: Todo;
   @Output() toggleComplete = new EventEmitter<Todo>();
   @Output() delete = new EventEmitter<string>();
+
+  onToggleComplete(): void {
+    this.todoService.toggleTodoComplete(this.todo.id).subscribe({
+      next: (updatedTodo) => {
+        this.toggleComplete.emit(updatedTodo);
+      },
+      error: (err) => {
+        console.error('Error toggling todo:', err);
+      }
+    });
+  }
 }

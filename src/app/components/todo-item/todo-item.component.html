@@ -1,11 +1,11 @@
 <div class="todo-item" [class.completed]="todo.completed">
   <div class="todo-content">
-    <!-- <input 
+    <input 
       type="checkbox" 
       [checked]="todo.completed"
       (change)="onToggleComplete()"
       class="todo-checkbox"
-    />-->
+    />
     <div class="todo-text">
       <h3>{{ todo.title }}</h3>
       @if (todo.description) {
